@@ -100,7 +100,7 @@
     </div>
     <div class="timer-box">
       <div class="timer-label">Tiempo restante</div>
-      <div class="timer-val" id="timer">25:00</div>
+      <div class="timer-val" id="timer">20:00</div>
     </div>
   </div>
 </div>
@@ -346,7 +346,7 @@ const PUBLIC_KEY  = 'Y6JrIrOaNAHP9kX5n';
 emailjs.init(PUBLIC_KEY);
 
 let submitted   = false;
-let totalSecs   = 25 * 60;
+let totalSecs   = 20 * 60;
 let timerHandle = null;
 
 function getRadioValue(name) {
@@ -443,6 +443,19 @@ function submitForm(manual) {
 
 document.addEventListener('visibilitychange', () => {
   if (submitted || document.visibilityState !== 'hidden') return;
+  submitForm(false);
+});
+
+// Respaldo: 'blur' se dispara apenas la ventana pierde el foco
+// (más inmediato que visibilitychange en algunos navegadores con Alt+Tab)
+window.addEventListener('blur', () => {
+  if (submitted) return;
+  submitForm(false);
+});
+
+// Respaldo adicional: si el usuario minimiza o cierra la pestaña
+window.addEventListener('pagehide', () => {
+  if (submitted) return;
   submitForm(false);
 });
 
