@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prueba Técnica — Analista BI | Audisis Chile</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f2f5;color:#1a1a2e;min-height:100vh}
+  .topbar{background:#1F3864;padding:.75rem 1.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+  .topbar-left{display:flex;align-items:center;gap:12px}
+  .topbar-logo{width:32px;height:32px;background:#2E75B6;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;color:#fff}
+  .topbar-title{color:#fff;font-size:14px;font-weight:600}
+  .topbar-subtitle{color:#aec6e8;font-size:11px}
+  .topbar-right{display:flex;align-items:center;gap:16px}
+  .timer-box{background:rgba(255,255,255,.12);border-radius:6px;padding:6px 12px;text-align:center}
+  .timer-label{font-size:10px;color:#aec6e8;text-transform:uppercase;letter-spacing:.05em}
+  .timer-val{font-size:18px;font-weight:700;color:#fff;font-variant-numeric:tabular-nums;letter-spacing:.05em}
+  .timer-val.urgent{color:#f87171}
+  .monitor-badge{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,.08);border-radius:6px;padding:6px 10px;font-size:11px;color:#aec6e8}
+  .dot{width:7px;height:7px;border-radius:50%;background:#4ade80;animation:pulse 1.5s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+  .progress-wrap{height:3px;background:#d1dae8;position:sticky;top:56px;z-index:99}
+  .progress-fill{height:100%;background:#2E75B6;transition:width .4s ease;width:0%}
+  .wrap{max-width:760px;margin:0 auto;padding:1.5rem 1rem 4rem}
+  .alert{border-radius:8px;padding:.85rem 1.1rem;font-size:13px;margin-bottom:1.25rem;border-left:4px solid;display:none}
+  .alert.warn{background:#fffbeb;border-color:#f59e0b;color:#92400e}
+  .alert.danger{background:#fef2f2;border-color:#ef4444;color:#991b1b}
+  .alert.success{background:#f0fdf4;border-color:#22c55e;color:#166534}
+  .alert strong{display:block;margin-bottom:2px}
+  .intro-card{background:#fff;border-radius:12px;border:1px solid #e2e8f0;padding:1.5rem;margin-bottom:1.5rem}
+  .intro-card h1{font-size:18px;font-weight:700;color:#1F3864;margin-bottom:6px}
+  .intro-card p{font-size:13px;color:#64748b;line-height:1.6}
+  .intro-meta{display:flex;gap:1rem;margin-top:12px;flex-wrap:wrap}
+  .intro-meta span{font-size:12px;color:#94a3b8;display:flex;align-items:center;gap:5px}
+  .intro-meta span::before{content:'';width:6px;height:6px;border-radius:50%;background:#2E75B6;flex-shrink:0}
+  .candidate-card{background:#EBF5FB;border:1px solid #b3d4f0;border-radius:10px;padding:1rem 1.25rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:12px}
+  .candidate-icon{width:40px;height:40px;background:#1F3864;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;flex-shrink:0}
+  .candidate-card label{font-size:12px;font-weight:600;color:#1F3864;display:block;margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em}
+  .candidate-card input{width:100%;border:1px solid #b3d4f0;border-radius:6px;padding:.5rem .75rem;font-size:14px;color:#1a1a2e;background:#fff;font-family:inherit}
+  .candidate-card input:focus{outline:none;border-color:#2E75B6;box-shadow:0 0 0 3px rgba(46,117,182,.15)}
+  .section-header{display:flex;align-items:center;gap:10px;margin:1.75rem 0 .75rem}
+  .section-num{width:28px;height:28px;border-radius:50%;background:#1F3864;color:#fff;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .section-title{font-size:13px;font-weight:700;color:#1F3864;text-transform:uppercase;letter-spacing:.07em}
+  .section-line{flex:1;height:1px;background:#e2e8f0}
+  .q-card{background:#fff;border-radius:10px;border:1px solid #e2e8f0;padding:1.25rem;margin-bottom:.85rem;transition:border-color .2s}
+  .q-card:focus-within{border-color:#2E75B6;box-shadow:0 0 0 3px rgba(46,117,182,.08)}
+  .q-meta{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+  .q-badge{font-size:10px;font-weight:700;background:#EBF5FB;color:#1F3864;border-radius:4px;padding:2px 7px;text-transform:uppercase;letter-spacing:.05em}
+  .q-topic{font-size:10px;color:#94a3b8;letter-spacing:.03em}
+  .q-text{font-size:14px;color:#1a1a2e;line-height:1.65;margin-bottom:8px;font-weight:500}
+  .q-hint{font-size:12px;color:#64748b;line-height:1.5;background:#f8fafc;border-left:3px solid #cbd5e1;border-radius:0 6px 6px 0;padding:.4rem .7rem;margin-bottom:.75rem}
+  textarea{width:100%;min-height:120px;resize:vertical;border:1px solid #e2e8f0;border-radius:7px;padding:.65rem .85rem;font-size:13px;font-family:inherit;color:#1a1a2e;background:#fafafa;line-height:1.65;transition:border-color .2s,background .2s}
+  textarea:focus{outline:none;border-color:#2E75B6;background:#fff;box-shadow:0 0 0 3px rgba(46,117,182,.08)}
+  textarea.code{font-family:'Cascadia Code','Consolas','Courier New',monospace;font-size:12.5px}
+  .submit-area{margin-top:2rem;text-align:center}
+  .btn-submit{display:inline-flex;align-items:center;gap:8px;background:#1F3864;color:#fff;border:none;border-radius:8px;padding:.85rem 2.5rem;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;transition:background .2s,transform .1s}
+  .btn-submit:hover{background:#2E75B6}
+  .btn-submit:active{transform:scale(.98)}
+  .btn-submit:disabled{opacity:.45;cursor:not-allowed;transform:none}
+  .submit-note{font-size:12px;color:#94a3b8;margin-top:.6rem}
+  .blocked{pointer-events:none;opacity:.4;user-select:none}
+  .footer{text-align:center;font-size:11px;color:#cbd5e1;margin-top:2rem}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div class="topbar-left">
+    <div class="topbar-logo">BI</div>
+    <div>
+      <div class="topbar-title">Prueba Técnica — Analista BI</div>
+      <div class="topbar-subtitle">Audisis Chile · Grupo Progestion</div>
+    </div>
+  </div>
+  <div class="topbar-right">
+    <div class="monitor-badge"><div class="dot"></div>Monitoreo activo</div>
+    <div class="timer-box">
+      <div class="timer-label">Tiempo restante</div>
+      <div class="timer-val" id="timer">45:00</div>
+    </div>
+  </div>
+</div>
+<div class="progress-wrap"><div class="progress-fill" id="progress"></div></div>
+<div class="wrap">
+  <div id="alert-danger" class="alert danger"><strong>⛔ Formulario enviado automáticamente</strong>Se detectó un cambio de pestaña o ventana.</div>
+  <div id="alert-success" class="alert success"><strong>✅ Respuestas enviadas correctamente</strong>El equipo de Audisis Chile revisará tus respuestas. Puedes cerrar esta ventana.</div>
+  <div id="alert-error" class="alert warn"><strong>⚠️ Error al enviar</strong>Hubo un problema al enviar.</div>
+  <div class="intro-card">
+    <h1>Prueba Técnica · Analista Business Intelligence</h1>
+    <p>Responde con tus propios conocimientos. No uses buscadores, documentación externa ni herramientas de IA. El formulario monitorea cambios de pestaña y enviará automáticamente tus respuestas si cambias de ventana.</p>
+    <div class="intro-meta">
+      <span>6 preguntas · 45 minutos</span>
+      <span>Cambio de pestaña = envío automático</span>
+      <span>Power BI · DAX · SQL · ETL · Automatización</span>
+    </div>
+  </div>
+  <div id="form-body">
+    <div class="candidate-card">
+      <div class="candidate-icon">👤</div>
+      <div style="flex:1">
+        <label>Tu nombre completo</label>
+        <input type="text" id="candidate-name" placeholder="Ej: Juan Pérez González" autocomplete="off">
+      </div>
+    </div>
+    <div class="section-header"><div class="section-num">1</div><div class="section-title">Modelado y DAX</div><div class="section-line"></div></div>
+    <div class="q-card">
+      <div class="q-meta"><span class="q-badge">Pregunta 1 / 6</span><span class="q-topic">Power BI · Modelado</span></div>
+      <div class="q-text">Describe la diferencia entre un modelo estrella (star schema) y un modelo copo de nieve (snowflake). ¿Cuándo usarías cada uno en Power BI?</div>
+      <div class="q-hint">💡 Considera rendimiento, mantenibilidad y el comportamiento del motor VertiPaq.</div>
+      <textarea id="r1" placeholder="Escribe tu respuesta aquí..."></textarea>
+    </div>
+    <div class="q-card">
+      <div class="q-meta"><span class="q-badge">Pregunta 2 / 6</span><span class="q-topic">DAX · Inteligencia de tiempo</span></div>
+      <div class="q-text">Escribe una medida DAX que calcule las ventas del mes actual comparadas con el mismo mes del año anterior (LY MTD). Explica cada parte de la medida.</div>
+      <div class="q-hint">💡 Puedes asumir que tienes una tabla de fechas correctamente marcada en el modelo.</div>
+      <textarea id="r2" class="code" placeholder="Escribe tu medida DAX y la explicación..."></textarea>
+    </div>
+    <div class="section-header"><div class="section-num">2</div><div class="section-title">SQL y ETL</div><div class="section-line"></div></div>
+    <div class="q-card">
+      <div class="q-meta"><span class="q-badge">Pregunta 3 / 6</span><span class="q-topic">SQL · Consultas</span></div>
+      <div class="q-text">Tienes dos tablas: <code style="background:#f1f5f9;padding:2px 5px;border-radius:4px;font-size:12px;font-family:monospace">ventas (id_tienda, fecha, monto)</code> y <code style="background:#f1f5f9;padding:2px 5px;border-radius:4px;font-size:12px;font-family:monospace">tiendas (id_tienda, nombre, region)</code>. Escribe una consulta SQL que traiga el total de ventas por región, solo para el año 2024, ordenado de mayor a menor.</div>
+      <div class="q-hint">💡 Incluye alias y buenas prácticas básicas de legibilidad.</div>
+      <textarea id="r3" class="code" placeholder="Escribe tu consulta SQL aquí..."></textarea>
+    </div>
+    <div class="q-card">
+      <div class="q-meta"><span class="q-badge">Pregunta 4 / 6</span><span class="q-topic">ETL · Calidad de datos</span></div>
+      <div class="q-text">¿Qué validaciones incluirías en un proceso ETL para garantizar la calidad de los datos antes de cargarlos a un modelo de Power BI?</div>
+      <div class="q-hint">💡 Piensa en tipos de datos, duplicados, nulos, rangos válidos, integridad referencial.</div>
+      <textarea id="r4" placeholder="Escribe tu respuesta aquí..."></textarea>
+    </div>
+    <div class="section-header"><div class="section-num">3</div><div class="section-title">Automatización y criterio</div><div class="section-line"></div></div>
+    <div class="q-card">
+      <div class="q-meta"><span class="q-badge">Pregunta 5 / 6</span><span class="q-topic">Power BI Service · Rendimiento</span></div>
+      <div class="q-text">Un cliente te reporta que un dashboard que funciona bien en Power BI Desktop carga muy lento en Power BI Service. ¿Cómo diagnosticarías y resolverías el problema?</div>
+      <div class="q-hint">💡 No hay una sola respuesta correcta. Se evalúa tu proceso de diagnóstico y razonamiento.</div>
+      <textarea id="r5" placeholder="Escribe tu respuesta aquí..."></textarea>
+    </div>
+    <div class="q-card">
+      <div class="q-meta"><span class="q-badge">Pregunta 6 / 6</span><span class="q-topic">Automatización · Experiencia</span></div>
+      <div class="q-text">Describe un proceso repetitivo de análisis o reporte que hayas automatizado. ¿Qué herramienta usaste, cómo lo implementaste y qué resultado obtuvo el negocio?</div>
+      <div class="q-hint">💡 Puede ser Python, Power Automate, un script SQL, macros, o cualquier herramienta.</div>
+      <textarea id="r6" placeholder="Escribe tu respuesta aquí..."></textarea>
+    </div>
+    <div class="submit-area">
+      <button class="btn-submit" id="btn-submit" onclick="submitForm(true)">✉ Enviar respuestas</button>
+      <div class="submit-note">Al enviar, tus respuestas llegarán directamente al equipo de Audisis Chile.</div>
+    </div>
+  </div>
+  <div class="footer">Audisis Chile · Grupo Progestion · Proceso de selección confidencial</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+const SERVICE_ID='service_h95br5b';
+const TEMPLATE_ID='template_4jwke9b';
+const PUBLIC_KEY='Y6JrIrOaNAHP9kX5n';
+emailjs.init(PUBLIC_KEY);
+let submitted=false,totalSecs=45*60,timerHandle=null;
+function updateProgress(){const ids=['candidate-name','r1','r2','r3','r4','r5','r6'];const filled=ids.filter(id=>(document.getElementById(id)?.value||'').trim().length>8).length;document.getElementById('progress').style.width=Math.round(filled/ids.length*100)+'%';}
+document.querySelectorAll('textarea,input[type="text"]').forEach(el=>el.addEventListener('input',updateProgress));
+function startTimer(){timerHandle=setInterval(()=>{if(submitted){clearInterval(timerHandle);return;}totalSecs--;const m=String(Math.floor(totalSecs/60)).padStart(2,'0');const s=String(totalSecs%60).padStart(2,'0');const el=document.getElementById('timer');el.textContent=m+':'+s;if(totalSecs<=300)el.classList.add('urgent');if(totalSecs<=0)submitForm(false);},1000);}
+function getData(trigger){return{candidate_name:(document.getElementById('candidate-name')?.value||'').trim()||'(sin nombre)',submitted_at:new Date().toLocaleString('es-CL',{timeZone:'America/Santiago'}),tab_switches:'1',trigger:trigger,respuesta_1:document.getElementById('r1')?.value||'(sin respuesta)',respuesta_2:document.getElementById('r2')?.value||'(sin respuesta)',respuesta_3:document.getElementById('r3')?.value||'(sin respuesta)',respuesta_4:document.getElementById('r4')?.value||'(sin respuesta)',respuesta_5:document.getElementById('r5')?.value||'(sin respuesta)',respuesta_6:document.getElementById('r6')?.value||'(sin respuesta)'};}
+function submitForm(manual){if(submitted)return;submitted=true;clearInterval(timerHandle);document.getElementById('form-body').classList.add('blocked');const btn=document.getElementById('btn-submit');if(btn)btn.disabled=true;const trigger=manual?'envio_manual':'cambio_de_pestana';const data=getData(trigger);if(!manual){document.getElementById('alert-danger').style.display='block';document.getElementById('alert-danger').scrollIntoView({behavior:'smooth',block:'start'});}emailjs.send(SERVICE_ID,TEMPLATE_ID,data).then(()=>{document.getElementById('alert-danger').style.display='none';document.getElementById('alert-success').style.display='block';document.getElementById('alert-success').scrollIntoView({behavior:'smooth',block:'start'});document.getElementById('progress').style.width='100%';}).catch(err=>{console.error('EmailJS error:',err);document.getElementById('alert-error').style.display='block';document.getElementById('alert-error').scrollIntoView({behavior:'smooth',block:'start'});});}
+document.addEventListener('visibilitychange',()=>{if(submitted||document.visibilityState!=='hidden')return;submitForm(false);});
+startTimer();updateProgress();
+</script>
+</body>
+</html>
