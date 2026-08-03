@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prueba Técnica - Analista BI | Audisis Chile</title>
+<title>Prueba Técnica — Analista BI | Audisis Chile</title>
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:'Segoe UI',Arial,sans-serif;background:#f0f2f5;color:#1a1a2e;min-height:100vh}
@@ -69,6 +69,7 @@
   .option:hover{border-color:#2E75B6;background:#f8faff}
   .option input{margin-top:2px;flex-shrink:0}
   .option span{font-size:13px;color:#1a1a2e;line-height:1.5}
+  .option.correct-hint{border-color:#22c55e}
 
   .submit-area{margin-top:2rem;text-align:center}
   .btn-submit{display:inline-flex;align-items:center;gap:8px;background:#1F3864;color:#fff;border:none;border-radius:8px;padding:.85rem 2.5rem;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;transition:background .2s,transform .1s}
@@ -88,7 +89,7 @@
   <div class="topbar-left">
     <div class="topbar-logo">BI</div>
     <div>
-      <div class="topbar-title">Prueba Técnica - Analista BI</div>
+      <div class="topbar-title">Prueba Técnica — Analista BI</div>
       <div class="topbar-subtitle">Audisis Chile · Grupo Progestion</div>
     </div>
   </div>
@@ -114,12 +115,10 @@
     <strong>⛔ Formulario enviado automáticamente</strong>
     Se detectó un cambio de pestaña o ventana. Las respuestas han sido enviadas en el estado actual.
   </div>
-
   <div id="alert-success" class="alert success">
     <strong>✅ Respuestas enviadas correctamente</strong>
     El equipo de Audisis Chile revisará tus respuestas. Puedes cerrar esta ventana.
   </div>
-
   <div id="alert-error" class="alert warn">
     <strong>⚠️ Error al enviar</strong>
     Hubo un problema al enviar. Tus respuestas han sido registradas localmente.
@@ -127,9 +126,9 @@
 
   <div class="intro-card">
     <h1>Prueba Técnica · Analista BI</h1>
-    <p>Cuestionario técnico para Analista BI con foco en retail, SQL, Power BI, DAX, Power Query y Python. Responde con tus propios conocimientos, sin buscadores, documentación externa ni herramientas de IA. El formulario monitorea cambios de pestaña y enviará automáticamente tus respuestas si cambias de ventana.</p>
+    <p>Cuestionario técnico para Analista BI con foco en retail, SQL, Power BI (DAX/Power Query) y Python. Responde con tus propios conocimientos, sin buscadores, documentación externa ni herramientas de IA. El formulario monitorea cambios de pestaña y enviará automáticamente tus respuestas si cambias de ventana.</p>
     <div class="intro-meta">
-      <span>18 preguntas · 20 minutos</span>
+      <span>19 preguntas · 20 minutos</span>
       <span>Cambio de pestaña = envío automático</span>
       <span>Retail · SQL · Power BI · Python</span>
     </div>
@@ -153,7 +152,7 @@
     </div>
 
     <div class="q-card">
-      <div class="q-meta"><span class="q-badge">Pregunta 1 / 18</span><span class="q-topic">KPI · OSA</span></div>
+      <div class="q-meta"><span class="q-badge">Pregunta 1 / 19</span><span class="q-topic">KPI · OSA</span></div>
       <div class="q-text">¿Qué mide el indicador OSA (On Shelf Availability)?</div>
       <div class="options">
         <label class="option"><input type="radio" name="r2" value="a"><span>Porcentaje de SKUs facturados sobre el total del catálogo</span></label>
@@ -164,7 +163,7 @@
     </div>
 
     <div class="q-card">
-      <div class="q-meta"><span class="q-badge">Pregunta 2 / 18</span><span class="q-topic">Modelo de negocio</span></div>
+      <div class="q-meta"><span class="q-badge">Pregunta 2 / 19</span><span class="q-topic">Modelo de negocio</span></div>
       <div class="q-text">¿Qué significa que una empresa opere bajo un modelo B2B (Business to Business)?</div>
       <div class="options">
         <label class="option"><input type="radio" name="r3" value="a"><span>Vende sus productos o servicios a otras empresas, no directamente al consumidor final</span></label>
@@ -175,13 +174,13 @@
     </div>
 
     <div class="q-card">
-      <div class="q-meta"><span class="q-badge">Pregunta 3 / 18</span><span class="q-topic">Sell-in vs Sell-out</span></div>
+      <div class="q-meta"><span class="q-badge">Pregunta 3 / 19</span><span class="q-topic">Sell-in vs Sell-out</span></div>
       <div class="q-text">Explica la diferencia entre Sell-in y Sell-out en una o dos frases.</div>
       <textarea id="r4" placeholder="Escribe tu respuesta aquí..."></textarea>
     </div>
 
     <div class="q-card">
-      <div class="q-meta"><span class="q-badge">Pregunta 4 / 18</span><span class="q-topic">DOH · Inventario</span></div>
+      <div class="q-meta"><span class="q-badge">Pregunta 4 / 19</span><span class="q-topic">DOH · Inventario</span></div>
       <div class="q-text">¿Cómo calcularías el DOH (Days on Hand) de un SKU en una tienda?</div>
       <div class="options">
         <label class="option"><input type="radio" name="r5" value="a"><span>Stock actual / Venta promedio diaria</span></label>
@@ -192,13 +191,13 @@
     </div>
 
     <div class="q-card">
-      <div class="q-meta"><span class="q-badge">Pregunta 5 / 18</span><span class="q-topic">KPI · Cumplimiento</span></div>
-      <div class="q-text">¿Cómo calcularías un % de cumplimiento respecto a una meta? Explica la fórmula e indica un ejemplo simple.</div>
+      <div class="q-meta"><span class="q-badge">Pregunta 5 / 19</span><span class="q-topic">Proyección</span></div>
+      <div class="q-text">¿Qué es la "tendencia al cierre" (o proyección de cierre de mes)? Explícalo en términos simples.</div>
       <textarea id="r6" placeholder="Escribe tu respuesta aquí..."></textarea>
     </div>
 
     <div class="q-card">
-      <div class="q-meta"><span class="q-badge">Pregunta 6 / 18</span><span class="q-topic">Diagnóstico de negocio</span></div>
+      <div class="q-meta"><span class="q-badge">Pregunta 6 / 19</span><span class="q-topic">Diagnóstico de negocio</span></div>
       <div class="q-text">Un gerente te dice: "el sell-out cayó 15% pero el sell-in subió 8% este mes". ¿Qué riesgo de negocio te hace sospechar esta combinación?</div>
       <div class="options">
         <label class="option"><input type="radio" name="r7" value="a"><span>Sobre-stock / inventario acumulándose en el canal</span></label>
@@ -209,8 +208,8 @@
     </div>
 
     <div class="q-card">
-      <div class="q-meta"><span class="q-badge">Pregunta 7 / 18</span><span class="q-topic">KPI general</span></div>
-      <div class="q-text">Nombra al menos 1 KPI de retail/consumo masivo distinto a los ya mencionados que conozcas o hayas usado, y qué mide.</div>
+      <div class="q-meta"><span class="q-badge">Pregunta 7 / 19</span><span class="q-topic">KPI general</span></div>
+      <div class="q-text">Nombra al menos 1 KPI de retail/consumo masivo (distinto a los ya mencionados) que conozcas o hayas usado, y qué mide.</div>
       <textarea id="r8" placeholder="Escribe tu respuesta aquí..."></textarea>
     </div>
 
@@ -222,7 +221,7 @@
     </div>
 
     <div class="q-card">
-      <div class="q-meta"><span class="q-badge">Pregunta 8 / 18</span><span class="q-topic">SQL · Filtro y orden</span></div>
+      <div class="q-meta"><span class="q-badge">Pregunta 8 / 19</span><span class="q-topic">SQL · Filtro y orden</span></div>
       <div class="q-schema">Tabla disponible:
 FACT_VENTAS (fecha, sku, tienda_id, unidades, monto)</div>
       <div class="q-text">Escribe una consulta SQL que muestre fecha, sku y unidades de todas las ventas de la tienda con tienda_id = 101, ordenadas por fecha de forma descendente.</div>
@@ -230,61 +229,66 @@ FACT_VENTAS (fecha, sku, tienda_id, unidades, monto)</div>
     </div>
 
     <div class="q-card">
-      <div class="q-meta"><span class="q-badge">Pregunta 9 / 18</span><span class="q-topic">SQL · Join</span></div>
+      <div class="q-meta"><span class="q-badge">Pregunta 9 / 19</span><span class="q-topic">SQL · Join</span></div>
       <div class="q-schema">Tablas disponibles:
 FACT_VENTAS (fecha, sku, tienda_id, unidades, monto)
 DIM_PRODUCTO (sku, categoria, marca)</div>
-      <div class="q-text">Escribe una consulta SQL que muestre fecha, sku, marca y unidades para cada venta registrada, uniendo ambas tablas mediante el campo sku.</div>
+      <div class="q-text">Escribe una consulta SQL que muestre la marca junto con las unidades vendidas, uniendo ambas tablas por el campo sku.</div>
       <textarea id="r10" class="code" placeholder="Escribe tu consulta SQL aquí..."></textarea>
     </div>
 
     <div class="q-card">
-      <div class="q-meta"><span class="q-badge">Pregunta 10 / 18</span><span class="q-topic">SQL · Agregación</span></div>
+      <div class="q-meta"><span class="q-badge">Pregunta 10 / 19</span><span class="q-topic">SQL · Agregación</span></div>
       <div class="q-schema">Tablas disponibles:
 FACT_VENTAS (fecha, sku, tienda_id, unidades, monto)
 DIM_PRODUCTO (sku, categoria, marca)</div>
-      <div class="q-text">Escribe una consulta SQL que obtenga el total de unidades vendidas por marca durante los últimos 30 días, ordenando el resultado de mayor a menor.</div>
+      <div class="q-text">Escribe una consulta SQL que calcule el total de unidades vendidas por marca en el último mes, ordenado de mayor a menor.</div>
       <textarea id="r11" class="code" placeholder="Escribe tu consulta SQL aquí..."></textarea>
     </div>
 
     <div class="q-card">
-      <div class="q-meta"><span class="q-badge">Pregunta 11 / 18</span><span class="q-topic">SQL · Stock sin venta</span></div>
-      <div class="q-schema">Tablas disponibles:
-FACT_VENTAS (fecha, sku, tienda_id, unidades, monto)
-DIM_STOCK (fecha, sku, tienda_id, stock)</div>
-      <div class="q-text">Escribe una consulta SQL que identifique los SKU por tienda que tienen stock mayor a cero pero no registran ventas durante los últimos 7 días.</div>
+      <div class="q-meta"><span class="q-badge">Pregunta 11 / 19</span><span class="q-topic">SQL · Quiebre de stock</span></div>
+      <div class="q-schema">Tabla disponible:
+FACT_VENTAS (fecha, sku, tienda_id, unidades, monto)</div>
+      <div class="q-text">Escribe una consulta SQL que identifique las combinaciones de sku y tienda_id que no registraron ninguna venta en los últimos 7 días (posible quiebre de stock).</div>
       <textarea id="r12" class="code" placeholder="Escribe tu consulta SQL aquí..."></textarea>
     </div>
 
     <!-- BLOQUE 3: POWER BI (DAX Y POWER QUERY) -->
     <div class="section-header">
       <div class="section-num">3</div>
-      <div class="section-title">Power BI · DAX y Power Query</div>
+      <div class="section-title">Power BI — DAX y Power Query</div>
       <div class="section-line"></div>
     </div>
 
     <div class="q-card">
-      <div class="q-meta"><span class="q-badge">Pregunta 12 / 18</span><span class="q-topic">DAX · Medida simple</span></div>
-      <div class="q-text">Escribe una medida DAX simple que calcule el total de ventas usando la columna monto de la tabla FACT_VENTAS.</div>
+      <div class="q-meta"><span class="q-badge">Pregunta 12 / 19</span><span class="q-topic">DAX · Medida simple</span></div>
+      <div class="q-text">Escribe una medida DAX simple que calcule el total de ventas (columna Monto de la tabla FACT_VENTAS).</div>
       <textarea id="r13" class="code" placeholder="Escribe tu medida DAX aquí..."></textarea>
     </div>
 
     <div class="q-card">
-      <div class="q-meta"><span class="q-badge">Pregunta 13 / 18</span><span class="q-topic">DAX · Medida filtrada</span></div>
-      <div class="q-text">Escribe una medida DAX que calcule el total de ventas usando la columna monto de la tabla FACT_VENTAS, solo para la categoría 'Bebidas'.</div>
+      <div class="q-meta"><span class="q-badge">Pregunta 13 / 19</span><span class="q-topic">DAX · Medida filtrada</span></div>
+      <div class="q-text">Escribe una medida DAX que calcule el total de ventas (columna Monto de la tabla FACT_VENTAS) solo de la categoría 'Bebidas' (columna Categoria de la tabla FACT_VENTAS).</div>
       <textarea id="r14" class="code" placeholder="Escribe tu medida DAX aquí..."></textarea>
     </div>
 
     <div class="q-card">
-      <div class="q-meta"><span class="q-badge">Pregunta 14 / 18</span><span class="q-topic">Columna vs medida</span></div>
+      <div class="q-meta"><span class="q-badge">Pregunta 14 / 19</span><span class="q-topic">Columna vs Medida</span></div>
       <div class="q-text">¿Cuál es la diferencia básica entre una columna calculada y una medida en Power BI?</div>
       <textarea id="r15" placeholder="Escribe tu respuesta aquí..."></textarea>
     </div>
 
     <div class="q-card">
-      <div class="q-meta"><span class="q-badge">Pregunta 15 / 18</span><span class="q-topic">Power Query vs DAX</span></div>
-      <div class="q-text">¿Cuándo resolverías una transformación en Power Query y cuándo la resolverías con DAX? Da un ejemplo práctico de cada caso.</div>
-      <textarea id="r16" placeholder="Escribe tu respuesta aquí..."></textarea>
+      <div class="q-meta"><span class="q-badge">Pregunta 15 / 19</span><span class="q-topic">Power Query</span></div>
+      <div class="q-text">Tienes una columna con valores tipo 'SKU001, SKU002, SKU003' en una sola celda y necesitas una fila por cada SKU. ¿Qué harías en Power Query?</div>
+      <div class="options">
+        <label class="option"><input type="radio" name="r16" value="a"><span>Le pregunto a Copilot</span></label>
+        <label class="option"><input type="radio" name="r16" value="b"><span>Merge Queries</span></label>
+        <label class="option"><input type="radio" name="r16" value="c"><span>Table.Pivot</span></label>
+        <label class="option"><input type="radio" name="r16" value="d"><span>Table.Group</span></label>
+        <label class="option"><input type="radio" name="r16" value="e"><span>Split Column by Delimiter + Unpivot columns</span></label>
+      </div>
     </div>
 
     <!-- BLOQUE 4: PYTHON -->
@@ -295,13 +299,13 @@ DIM_STOCK (fecha, sku, tienda_id, stock)</div>
     </div>
 
     <div class="q-card">
-      <div class="q-meta"><span class="q-badge">Pregunta 16 / 18</span><span class="q-topic">Pandas · Lectura de datos</span></div>
+      <div class="q-meta"><span class="q-badge">Pregunta 16 / 19</span><span class="q-topic">Pandas · Lectura de datos</span></div>
       <div class="q-text">Escribe el código para leer un archivo llamado 'ventas.csv' con pandas y mostrar las primeras 5 filas.</div>
       <textarea id="r17" class="code" placeholder="Escribe tu código aquí..."></textarea>
     </div>
 
     <div class="q-card">
-      <div class="q-meta"><span class="q-badge">Pregunta 17 / 18</span><span class="q-topic">Pandas · Agregación</span></div>
+      <div class="q-meta"><span class="q-badge">Pregunta 17 / 19</span><span class="q-topic">Pandas · Agregación</span></div>
       <div class="q-schema">DataFrame disponible:
 df con columnas [tienda, ventas]</div>
       <div class="q-text">Escribe el código para calcular el total de ventas por tienda.</div>
@@ -316,7 +320,7 @@ df con columnas [tienda, ventas]</div>
     </div>
 
     <div class="q-card">
-      <div class="q-meta"><span class="q-badge">Pregunta 18 / 18</span><span class="q-topic">Diseño de dashboard</span></div>
+      <div class="q-meta"><span class="q-badge">Pregunta 18 / 19</span><span class="q-topic">Diseño de dashboard</span></div>
       <div class="q-text">Te piden un dashboard que muestre el sell-out semanal por cadena (Falabella, Paris, Ripley) comparado con una meta. En líneas generales, ¿qué tablas usarías y qué medida(s) crearías?</div>
       <textarea id="r19" placeholder="Escribe tu respuesta aquí..."></textarea>
     </div>
@@ -350,104 +354,68 @@ function getRadioValue(name) {
   return el ? el.value.toUpperCase() : '(sin responder)';
 }
 
-function getTextValue(id) {
-  return document.getElementById(id)?.value || '(sin respuesta)';
-}
-
 function updateProgress() {
-  const textIds = [
-    'candidate-name',
-    'r4',
-    'r6',
-    'r8',
-    'r9',
-    'r10',
-    'r11',
-    'r12',
-    'r13',
-    'r14',
-    'r15',
-    'r16',
-    'r17',
-    'r18',
-    'r19'
-  ];
-
-  const radioNames = ['r2','r3','r5','r7'];
-
-  let filled = textIds.filter(id => (document.getElementById(id)?.value || '').trim().length > 5).length;
+  const textIds  = ['candidate-name','r4','r6','r8','r9','r10','r11','r12','r13','r14','r15','r17','r18','r19'];
+  const radioNames = ['r2','r3','r5','r7','r16'];
+  let filled = textIds.filter(id => (document.getElementById(id)?.value||'').trim().length > 5).length;
   filled += radioNames.filter(n => document.querySelector(`input[name="${n}"]:checked`)).length;
-
   const total = textIds.length + radioNames.length;
   document.getElementById('progress').style.width = Math.round(filled / total * 100) + '%';
 }
-
 document.querySelectorAll('textarea, input[type="text"], input[type="radio"]').forEach(el =>
   el.addEventListener('input', updateProgress)
 );
-
 document.querySelectorAll('input[type="radio"]').forEach(el =>
   el.addEventListener('change', updateProgress)
 );
 
 function startTimer() {
   timerHandle = setInterval(() => {
-    if (submitted) {
-      clearInterval(timerHandle);
-      return;
-    }
-
+    if (submitted) { clearInterval(timerHandle); return; }
     totalSecs--;
-
-    const m  = String(Math.floor(totalSecs / 60)).padStart(2,'0');
-    const s  = String(totalSecs % 60).padStart(2,'0');
-    const el = document.getElementById('timer');
-
+    const m   = String(Math.floor(totalSecs / 60)).padStart(2,'0');
+    const s   = String(totalSecs % 60).padStart(2,'0');
+    const el  = document.getElementById('timer');
     el.textContent = `${m}:${s}`;
-
     if (totalSecs <= 300) el.classList.add('urgent');
-    if (totalSecs <= 0) submitForm(false);
+    if (totalSecs <= 0)   submitForm(false);
   }, 1000);
 }
 
 function getData(trigger) {
   return {
-    candidate_name : (document.getElementById('candidate-name')?.value || '').trim() || '(sin nombre)',
+    candidate_name : (document.getElementById('candidate-name')?.value||'').trim() || '(sin nombre)',
     submitted_at   : new Date().toLocaleString('es-CL', {timeZone:'America/Santiago'}),
-    tab_switches   : trigger === 'cambio_de_pestaña' ? '1' : '0',
+    tab_switches   : '1',
     trigger        : trigger,
-
-    // Se mantiene la estructura respuesta_1 a respuesta_19 para compatibilidad con la plantilla EmailJS existente.
-    respuesta_1    : 'Nombre: ' + ((document.getElementById('candidate-name')?.value || '').trim() || '(sin nombre)'),
+    respuesta_1    : 'Nombre: ' + ((document.getElementById('candidate-name')?.value||'').trim() || '(sin nombre)'),
     respuesta_2    : 'OSA: ' + getRadioValue('r2'),
     respuesta_3    : 'B2B: ' + getRadioValue('r3'),
-    respuesta_4    : getTextValue('r4'),
+    respuesta_4    : document.getElementById('r4')?.value || '(sin respuesta)',
     respuesta_5    : 'DOH: ' + getRadioValue('r5'),
-    respuesta_6    : getTextValue('r6'),
+    respuesta_6    : document.getElementById('r6')?.value || '(sin respuesta)',
     respuesta_7    : 'Riesgo sell-in/out: ' + getRadioValue('r7'),
-    respuesta_8    : getTextValue('r8'),
-    respuesta_9    : getTextValue('r9'),
-    respuesta_10   : getTextValue('r10'),
-    respuesta_11   : getTextValue('r11'),
-    respuesta_12   : getTextValue('r12'),
-    respuesta_13   : getTextValue('r13'),
-    respuesta_14   : getTextValue('r14'),
-    respuesta_15   : getTextValue('r15'),
-    respuesta_16   : getTextValue('r16'),
-    respuesta_17   : getTextValue('r17'),
-    respuesta_18   : getTextValue('r18'),
-    respuesta_19   : getTextValue('r19')
+    respuesta_8    : document.getElementById('r8')?.value || '(sin respuesta)',
+    respuesta_9    : document.getElementById('r9')?.value || '(sin respuesta)',
+    respuesta_10   : document.getElementById('r10')?.value || '(sin respuesta)',
+    respuesta_11   : document.getElementById('r11')?.value || '(sin respuesta)',
+    respuesta_12   : document.getElementById('r12')?.value || '(sin respuesta)',
+    respuesta_13   : document.getElementById('r13')?.value || '(sin respuesta)',
+    respuesta_14   : document.getElementById('r14')?.value || '(sin respuesta)',
+    respuesta_15   : document.getElementById('r15')?.value || '(sin respuesta)',
+    respuesta_16   : 'Power Query SKUs: ' + getRadioValue('r16'),
+    respuesta_17   : document.getElementById('r17')?.value || '(sin respuesta)',
+    respuesta_18   : document.getElementById('r18')?.value || '(sin respuesta)',
+    respuesta_19   : document.getElementById('r19')?.value || '(sin respuesta)',
   };
 }
 
 function submitForm(manual) {
   if (submitted) return;
-
   submitted = true;
   clearInterval(timerHandle);
 
   document.getElementById('form-body').classList.add('blocked');
-
   const btn = document.getElementById('btn-submit');
   if (btn) btn.disabled = true;
 
@@ -473,16 +441,48 @@ function submitForm(manual) {
     });
 }
 
+let leaveTimer   = null;
+const pageLoadedAt = Date.now();
+const GRACE_MS         = 2500; // tiempo que debe mantenerse fuera antes de enviar
+const STARTUP_GRACE_MS = 2000; // ignora blur/hidden justo al cargar la página
+
+function scheduleAutoSubmit() {
+  if (submitted) return;
+  if (Date.now() - pageLoadedAt < STARTUP_GRACE_MS) return; // ignora ruido inicial
+  if (leaveTimer) return; // ya hay uno programado
+  leaveTimer = setTimeout(() => {
+    leaveTimer = null;
+    if (submitted) return;
+    // Doble verificación: sigue oculto/sin foco después del período de gracia
+    if (document.visibilityState === 'hidden' || !document.hasFocus()) {
+      submitForm(false);
+    }
+  }, GRACE_MS);
+}
+
+function cancelAutoSubmit() {
+  if (leaveTimer) { clearTimeout(leaveTimer); leaveTimer = null; }
+}
+
 document.addEventListener('visibilitychange', () => {
-  if (submitted || document.visibilityState !== 'hidden') return;
-  submitForm(false);
+  if (submitted) return;
+  if (document.visibilityState === 'hidden') scheduleAutoSubmit();
+  else cancelAutoSubmit();
 });
 
+// Respaldo: 'blur' se dispara apenas la ventana pierde el foco
+// (más inmediato que visibilitychange en algunos navegadores con Alt+Tab)
 window.addEventListener('blur', () => {
   if (submitted) return;
-  submitForm(false);
+  scheduleAutoSubmit();
 });
 
+// Si vuelve a la pestaña dentro del período de gracia, se cancela el envío
+window.addEventListener('focus', () => {
+  cancelAutoSubmit();
+});
+
+// Respaldo adicional: si el usuario minimiza o cierra la pestaña
 window.addEventListener('pagehide', () => {
   if (submitted) return;
   submitForm(false);
